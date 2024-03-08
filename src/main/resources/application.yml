@@ -9,19 +9,17 @@ spring:
   jpa:
     properties:
       hibernate:
+        ddl-auto: none
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         jdbc:
           lob:
             non_contextual_creation: true
     show-sql: true
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
       dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     url: jdbc:postgresql://construction-app-8728.7tc.aws-eu-central-1.cockroachlabs.cloud:26257/construction?sslmode=require&password=-J5_BzsUkoJWJprUrzrSGA&user=noura
     username: noura
     password: -J5_BzsUkoJWJprUrzrSGA
-  liquibase:
-    enabled: true
-    change-log: classpath:db/changelog/db.changelog-master.xml
-

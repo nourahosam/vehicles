@@ -55,9 +55,16 @@ public class VehiclesApi {
         return ResponseEntity.ok(employees);
     }
 
-    @GetMapping("/getById")
-    public ResponseEntity<Object> getById(@PathVariable Long id){
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<Object> getById(@PathVariable(value = "id") Long id){
         Vehicles employee = vehiclesService.getById(id);
         return ResponseEntity.ok(employee);
+    }
+
+
+    @PostMapping("/addEmployeeToVehicle/{id}")
+    public ResponseEntity<Object> addEmployee(@PathVariable(value = "id") Long id, @RequestBody Vehicles vehicles){
+        Vehicles updatedVehicle = vehiclesService.addEmployeeToVehicle(id, vehicles);
+        return ResponseEntity.ok(updatedVehicle);
     }
 }
